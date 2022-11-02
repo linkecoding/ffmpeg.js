@@ -1,14 +1,14 @@
 {
-  "name": "ffmpeg.js",
-  "version": "4.2.9003",
-  "description": "Port of FFmpeg with Emscripten",
-  "main": "ffmpeg-webm.js",
+  "name": "@ugoira/ffmpeg.js",
+  "version": "4.4.3",
+  "description": "Port of FFmpeg(support mp4, png and gif) with Emscripten and",
+  "main": "ffmpeg-mp4.js",
   "scripts": {
     "test": "mocha test/test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kagami/ffmpeg.js.git"
+    "url": "git+https://github.com/ugoira/ffmpeg.js.git"
   },
   "keywords": [
     "asm.js",
@@ -18,11 +18,10 @@
   ],
   "author": "Kagami Hiiragi",
   "license": "(LGPL-2.1+ OR GPL-2.0)",
-  "ethereum": "0x3ec9a73ba55a22f020226be8b4496304d12be0e1",
   "bugs": {
-    "url": "https://github.com/Kagami/ffmpeg.js/issues"
+    "url": "https://github.com/ugoira/ffmpeg.js/issues"
   },
-  "homepage": "https://github.com/Kagami/ffmpeg.js#readme",
+  "homepage": "https://github.com/ugoira/ffmpeg.js#readme",
   "devDependencies": {
     "chai": "latest",
     "mocha": "latest"
