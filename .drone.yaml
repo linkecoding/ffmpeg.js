@@ -1,0 +1,42 @@
+kind: pipeline
+type: docker
+name: default
+
+# https://docs.drone.io/runner/kubernetes/configuration/resources/
+resources:
+  requests:
+    cpu: 2000
+    memory: 2048MiB
+
+trigger:
+  branch:
+    - master
+    - dev
+
+steps:
+
+  - name: prepare
+    image: alpine/git
+    commands:
+      # https://stackoverflow.com/questions/22677295/update-git-submodules-shallowly-with-the-depth-option
+      # maybe useless
+      - git submodule foreach 'git config -f .gitmodules submodule.$sm_path.shallow true'
+      - git submodule update --init --recursive
+      - git clone https://github.com/emscripten-core/emsdk.git --depth 1
+
+  - name: build
+    image: ubuntu:jammy
+    resources:
+      limits:
+        memory: 8192MiB
+    environment:
+    commands:
+      - apt update -qq
+      - apt install -y -qq python3 build-essential automake libtool pkg-config openjdk-8-jre-headless
+      - cd emsdk 
+      - ./emsdk install latest
+      - ./emsdk activate latest
+      - . ./emsdk_env.sh
+      - cd ..
+      - make
+      - ls

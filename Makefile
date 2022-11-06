@@ -29,6 +29,7 @@ clean-ffmpeg-mp4:
 	cd build/ffmpeg-mp4 && git clean -xdf
 clean-zlib:
 	cd build/zlib && git clean -xdf
+
 build/x264/dist/lib/libx264.so:
 	cd build/x264 && \
 	emconfigure ./configure \
@@ -122,10 +123,9 @@ build/ffmpeg-mp4/ffmpeg.bc: $(MP4_SHARED_DEPS)
 		--enable-gpl \
 		--enable-libx264 \
 		--extra-cflags="-s USE_ZLIB=1 -I../zlib/dist/include" \
-		--extra-ldflags="-L../zlib/dist/lib" \
+		--extra-ldflags="-r -L../zlib/dist/lib" \
 		&& \
-	emmake make -j && \
-	cp ffmpeg ffmpeg.bc
+		emmake make -j EXESUF=.bc
 
 EMCC_COMMON_ARGS = \
 	-O3 \
