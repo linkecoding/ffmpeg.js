@@ -1,6 +1,6 @@
 {
   "name": "@ugoira/ffmpeg.js",
-  "version": "4.4.3",
+  "version": "4.4.4.b854fe7",
   "description": "Port of FFmpeg(support mp4, png and gif) with Emscripten and",
   "main": "ffmpeg-mp4.js",
   "scripts": {
