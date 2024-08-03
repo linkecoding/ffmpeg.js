@@ -17,7 +17,7 @@ FFMPEG_MP4_PC_PATH = ../x264/dist/lib/pkgconfig
 MP4_SHARED_DEPS = \
 	build/x264/dist/lib/libx264.so
 all: zlib mp4
-mp4: ffmpeg-mp4.js # ffmpeg-worker-mp4.js
+mp4: ffmpeg-mp4.js ffmpeg-worker-mp4.js
 
 clean: clean-js \
 	clean-x264 clean-zlib clean-ffmpeg-mp4
