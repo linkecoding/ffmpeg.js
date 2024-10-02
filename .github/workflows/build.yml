@@ -1,0 +1,47 @@
+name: 构建和上传
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
+    
+    - name: 克隆 emsdk
+      run: git clone https://github.com/emscripten-core/emsdk.git --depth 1
+    
+    - name: 设置构建环境
+      run: |
+        sudo apt-get update -qq
+        sudo apt-get install -y -qq python3 build-essential automake libtool pkg-config openjdk-8-jre-headless curl
+    
+    - name: 设置 Emscripten
+      run: |
+        cd emsdk
+        ./emsdk install 3.1.33
+        ./emsdk activate 3.1.33
+        echo "EMSDK=$PWD" >> $GITHUB_ENV
+        echo "$PWD/upstream/emscripten" >> $GITHUB_PATH
+        cd ..
+    
+    - name: 构建
+      run: |
+        source emsdk/emsdk_env.sh
+        make
+        ls
+    
+    - name: 上传构建产物
+      uses: actions/upload-artifact@v3
+      with:
+        name: ffmpeg-builds
+        path: |
+          ffmpeg-mp4.js
+          ffmpeg-worker-mp4.js
