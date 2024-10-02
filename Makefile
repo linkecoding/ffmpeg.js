@@ -40,6 +40,7 @@ build/x264/dist/lib/libx264.so:
 		--enable-shared \
 		--disable-opencl \
 		--disable-interlaced \
+		--disable-thread \
 		--bit-depth=8 \
 		--chroma-format=420 \
 		--disable-asm \
