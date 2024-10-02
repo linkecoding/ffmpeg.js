@@ -39,7 +39,6 @@ build/x264/dist/lib/libx264.so:
 		--disable-cli \
 		--enable-shared \
 		--disable-opencl \
-		--disable-thread \
 		--disable-interlaced \
 		--bit-depth=8 \
 		--chroma-format=420 \
@@ -134,8 +133,8 @@ EMCC_COMMON_ARGS = \
 	-s EXIT_RUNTIME=1 \
 	-s NODEJS_CATCH_EXIT=0 \
 	-s NODEJS_CATCH_REJECTION=0 \
-	-s INITIAL_MEMORY=268173312 \
-	-s TOTAL_MEMORY=536346624 \
+	-s INITIAL_MEMORY=536870912 \
+	-s TOTAL_MEMORY=1073741824 \
 	-s USE_ZLIB=1 \
 	-lnodefs.js -lworkerfs.js \
 	--pre-js $(PRE_JS) \
