@@ -80,6 +80,9 @@ FFMPEG_COMMON_ARGS = \
 	--disable-runtime-cpudetect \
 	--disable-asm \
 	--disable-fast-unaligned \
+	--disable-pthreads \
+	--disable-w32threads \
+	--disable-os2threads \
 	--disable-debug \
 	--disable-stripping \
 	--disable-safe-bitstream-reader \
