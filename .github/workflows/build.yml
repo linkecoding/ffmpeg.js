@@ -11,8 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
     - name: clone
-      run: git submodule update --init --recursive
+      run: |
+        git submodule update --init --recursive
     
     - name: 克隆 emsdk
       run: git clone https://github.com/emscripten-core/emsdk.git --depth 1
